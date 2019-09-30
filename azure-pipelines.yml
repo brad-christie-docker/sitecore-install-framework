@@ -14,4 +14,4 @@ steps:
     $currentVersion = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
     Write-Host "Server version $($currentVersion.BuildLabEx)"
     Write-Host "Server releaseId $($currentVersion.ReleaseId)"
-    & docker info
+    & docker info 3>$null
