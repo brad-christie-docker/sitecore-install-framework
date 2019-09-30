@@ -15,3 +15,6 @@ steps:
     Write-Host "Server version $($currentVersion.BuildLabEx)"
     Write-Host "Server releaseId $($currentVersion.ReleaseId)"
     & docker info 3>$null
+  displayName: 'Output environment'
+- powershell: .\Build.ps1
+  displayName: 'Build image(s)'
