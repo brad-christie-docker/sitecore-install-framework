@@ -10,5 +10,7 @@ pool:
   vmImage: 'windows-2019'
 
 steps:
+- powershell: Write-Host (Get-ItemProperty -Path ‘HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion’).ReleaseId
+  displayName: 'Show Windows ReleaseId'
 - script: docker info
-  displayName: 'Display docker information'
+  displayName: 'Show Docker information'
