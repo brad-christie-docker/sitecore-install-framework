@@ -11,6 +11,10 @@ Function Get-BaseImages {
     Get-Childitem $imagesPath -Include "*.psd1" -Recurse | ForEach-Object {
       $baseImages += (Import-PowerShellDataFile $_.FullName).Images
     }
-    Return $baseImages
+    $sortProperties = @(
+      @{ Expression = { $_.ReleaseId }; Descending = $true }
+      @{ Expression = { $_.Image }; Descending = $true }
+    )
+    Return ($baseImages | Sort-Object $sortProperties)
   }
 }
