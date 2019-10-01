@@ -4,6 +4,7 @@
     @{
       Alias = "windows/servercore:1607"
       Image = "mcr.microsoft.com/windows/servercore:1607"
+      MultiArch = "windows/servercore"
       ReleaseId = 1607
     }
   )

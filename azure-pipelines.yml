@@ -31,5 +31,5 @@ steps:
     Write-Host "Server releaseId $($currentVersion.ReleaseId)"
     & docker info 3>$null
   displayName: 'Output environment'
-- powershell: .\Build.ps1
+- powershell: .\Build.ps1 -Latest -LongTermSupportChannel
   displayName: 'Build image(s)'

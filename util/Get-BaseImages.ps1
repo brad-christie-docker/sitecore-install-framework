@@ -9,7 +9,11 @@ Function Get-BaseImages {
 
     $baseImages = @()
     Get-Childitem $imagesPath -Include "*.psd1" -Recurse | ForEach-Object {
-      $baseImages += (Import-PowerShellDataFile $_.FullName).Images
+      $_isLtsc = $_.BaseName -like "ltsc*"
+      $baseImages += (Import-PowerShellDataFile $_.FullName).Images | ForEach-Object {
+        $_.Add('IsLTSC', $_isLtsc) # | Add-Member -NotePropertyName "IsLTSC" -NotePropertyValue $_isLtsc -PassThru
+        Return $_
+      }
     }
     $sortProperties = @(
       @{ Expression = { $_.ReleaseId }; Descending = $true }
